@@ -1,0 +1,12 @@
+﻿@using MyApiProject.WebUI.Dtos
+@model List<ResultCategoryDto>
+@{
+    ViewData["Title"] = "CategoryList";
+}
+
+@foreach (var item in Model)
+{
+    <p>@item.categoryId -@item.categoryName</p>
+}
+
+
