@@ -1,0 +1,35 @@
+﻿@model List<MyApiProject.WebUI.Dtos.ResultProductDto>
+@{
+    Layout = null;
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <br /><br />
+    <table class="table table-hover">
+        <tr>
+            <th>Ürün Id</th>
+            <th>Ürün Adı</th>
+            <th>Stok Sayısı</th>
+            <th>Fiyat</th>
+            <th>Kategori Id</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ProductId</td>
+                <td>@item.ProductName</td>
+                <td>@item.ProductStock</td>
+                <td>@item.ProductPrice ₺</td>
+                <td>@item.CategoryId</td>
+                <td><a href="/Products/DeleteProduct/@item.ProductId" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Products/UpdateProduct/@item.ProductId" cite="btn btn-succes">Güncelle</a></td>
+            </tr>
+        }
+    </table>
+    <a href="/Products/CreateProduct/" class="btn btn-primary">Ekle</a>
+
+</div>

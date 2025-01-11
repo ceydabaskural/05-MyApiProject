@@ -41,7 +41,18 @@ namespace MyApiProject.WebUI.Controllers
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createCategoryDto); //Create işleminde responeMessage da PostAsync serialize edeceğimiz içeriği ister o yüzden bu işlemi yapmadan önce serialize etme işlemini gerçekleştirmeliyiz
             StringContent stringContent = new StringContent(jsonData,Encoding.UTF8,"application/json"); // json data dan gelen veriyi PostAsync içinde işleyebilmemiz için StringContent türünde bir format daha istiyor 
-            var responseMessage = await client.PostAsync("https://localhost:7274/api/Category",stringContent);
+            var responseMessage = await client.PostAsync("https://localhost:7274/api/Category", stringContent);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("CategoryList");
+            }
+            return View();
+        }
+
+        public async Task<IActionResult> DeleteCategory(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.DeleteAsync("https://localhost:7274/api/Category?id=" + id); //?id = bizim gönderdiğimiz id ye
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("CategoryList");

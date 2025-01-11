@@ -4,9 +4,27 @@
     ViewData["Title"] = "CategoryList";
 }
 
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <br /><br />
+    <table class="table table-bordered">
+        <tr>
+        <th>Kategori Id</th>
+        <th>Kategori Adı</th>
+        <th>Kategori Sil</th>
+        <th>Kategori Güncelle</th>
+        </tr>
 @foreach (var item in Model)
 {
-    <p>@item.categoryId -@item.categoryName</p>
+   <tr>
+        <td>@item.categoryId</td>
+        <td>@item.categoryName</td>
+        <td><a href="/Categories/DeleteCategory/@item.categoryId" class="btn btn-danger">Sil</a></td>
+        <td><a href="/Categories/UpdateCategory/@item.categoryId" cite="btn btn-succes">Güncelle</a></td>
+   </tr>
 }
+    </table>
+<a href="/Categories/CreateCategory/" class="btn btn-primary">Ekle</a>
 
-
+</div>

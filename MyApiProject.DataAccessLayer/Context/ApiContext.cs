@@ -13,7 +13,7 @@ namespace MyApiProject.DataAccessLayer.Context
         //sql bağlantımızı yazmak için:
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=DESKTOP-F5CBDSU\\SQLEXPRESS;initial Catalog=ApiNewDb; integrated security=true");
+            optionsBuilder.UseSqlServer("Server=DESKTOP-F5CBDSU\\SQLEXPRESS;initial Catalog=ApiNewDb;integrated security=true;Trusted_Connection=True");
         }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
